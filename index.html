@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoje tem</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('background.jpeg'); /* Define a imagem de fundo */
+            background-size: cover; /* Faz a imagem cobrir toda a tela */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Evita repetição da imagem */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .box {
+            font-size: 20px;
+            color: azure;
+            height: 250px;
+            width: 350px;
+            border-radius: 10px;
+            background: rgba(25, 25, 25, 0.8); /* Fundo semitransparente */
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra */
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: space-around;
+            height: 50px;
+            width: 150px;
+        }
+        button {
+            height: 30px;
+            width: 80px;
+            background: white;
+            border-radius: 5px;
+            color: blue;
+            font-weight: 600;
+            position: relative;
+            border: none;
+            cursor: pointer;
+        }
+        /* Botão "Sim" com animação */
+        button a {
+            color: blue;
+        }
+        button.pulsating {
+            animation: pulse 1.5s infinite, color-change 2s infinite;
+        }
+        /* Animação de pulsação */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 15px rgba(0, 0, 255, 0.8);
+            }
+        }
+        /* Animação de mudança de cor */
+        @keyframes color-change {
+            0% {
+                background-color: white;
+                color: blue;
+            }
+            20% {
+                background-color: yellow;
+                color: red;
+            }
+            40% {
+                background-color: green;
+                color: white;
+            }
+            60% {
+                background-color: orange;
+                color: purple;
+            }
+            80% {
+                background-color: pink;
+                color: black;
+            }
+            100% {
+                background-color: white;
+                color: blue;
+            }
+        }
+        #no {
+            color: blue;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>C*zinho hoje?</p>
+        <div class="buttons-container">
+            <button class="pulsating">
+                <a href="https://www.youtube.com/shorts/eT5ca5F_9ns">Sim</a>
+            </button>
+            <button id="no">Não</button>
+        </div>
+    </div>
+</body>
+<script>
+    let button = document.getElementById('no');
+    let height = window.innerHeight - 50; // Altura disponível
+    let width = window.innerWidth - 50; // Largura disponível
+    
+    button.addEventListener('mouseover', function() {
+        button.style.position = "absolute";
+        button.style.top = Math.random() * height + "px"; // Posição aleatória na vertical
+        button.style.left = Math.random() * width + "px"; // Posição aleatória na horizontal
+    });
+</script>
+</html>
